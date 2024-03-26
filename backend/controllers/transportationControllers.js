@@ -46,7 +46,7 @@ const getSingleTransportationRec = async(request, response, next) => {
     }
 };
 
-// For development purposes
+// For development purposes: DO NOT USE IN PRODUCTION
 const updateTransportationRec = async(request, response, next) => {
     const userId = request.params.id;
     const recordId = request.params.transRecId;
@@ -60,6 +60,21 @@ const updateTransportationRec = async(request, response, next) => {
     }
 }
 
+const deleteTransportationRec = async(request, response, next) => {
+    const userId = request.params.id;
+    const recordId = request.params.transRecId;
+    const data= request.body;
+    const docRef = db.collection('users').doc(userId);
+    try{
+        await docRef.collection('transportation').doc(recordId).delete();
+        response.status(200).send(`Record ${recordId} deleted successfully!`);
+    } catch(error){
+        response.status(400).send(`Error deleting details of transportation record ${recordId}`);
+    }
+}
+
+// End of development related functions
+
 module.exports = {
-    addTransportationDetails, getAllTransportationDetails, getSingleTransportationRec, updateTransportationRec
+    addTransportationDetails, getAllTransportationDetails, getSingleTransportationRec, updateTransportationRec, deleteTransportationRec,
 }
