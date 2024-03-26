@@ -1,8 +1,8 @@
 This is the express branch.
 
-### Progress Update: Added Users Database Model
-### Working On: Models of Categories & Linking with Users
-### What's Left: Carbon Metric Finding Algorithm Functions
+### Progress Update: Added Transportation, Waste & Food model with Users Database Model
+### Working On: Carbon Metric Functions
+### What's Left: Testing database and metrics with a sample quiz
 
 I am thinking of the following tables/documents for the firestore database.
 
