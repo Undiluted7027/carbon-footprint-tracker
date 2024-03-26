@@ -1,5 +1,9 @@
 This is the express branch.
 
+### Progress Update: Added Users Database Model
+### Working On: Models of Categories & Linking with Users
+### What's Left: Carbon Metric Finding Algorithm Functions
+
 I am thinking of the following tables/documents for the firestore database.
 
 - Users Collection: `first_name, last_name, email, date_of_birth, location`
