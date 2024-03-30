@@ -1,0 +1,51 @@
+.dashboardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 5vw;
+    width: auto; /* Or specify a width if you want to limit its size */
+    height: auto;
+}
+
+.dashboardContainer .dashboardLeft, .dashboardTopic {
+    align-self: flex-start; /* Forces these items to align to the left */
+    background-color: rgb(199, 197, 197);
+    margin-right: 1em;
+    width: 35%;
+    height: auto;
+    padding: 1em;
+    border-radius: 20px;
+}
+.dashboardTopic, .dashboardRight {
+    align-self: flex-start; /* Forces these items to align to the left */
+}
+
+.dashboardLeftValue, .dashboardRightValue {
+    font-size: 1.5em;
+    /* font-weight: bold; */
+    background-color: rgb(197, 197, 197);
+    text-align: left;
+}
+
+.dashboardButton {
+    background-color: #96db8d;
+    border: none;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 1em;
+}
+.dashboardButton:hover {
+    background-color: #73b46f;
+}
+
+.dashboardTitle {
+    font-size: 1.5em;
+    /* font-weight: bold; */
+    /* margin-bottom: 1em; */
+}
