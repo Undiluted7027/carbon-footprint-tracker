@@ -1,0 +1,9 @@
+const LTOGAL = 0.2641720524;
+const GALTOL = 3.785411784;
+
+const MLTOGAL = 0.0002641721;
+const GALTOML = 378.5411784;
+
+module.exports = {
+    LTOGAL, GALTOL, MLTOGAL, GALTOML
+};
