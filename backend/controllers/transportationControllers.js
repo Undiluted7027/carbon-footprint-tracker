@@ -3,6 +3,7 @@ const db = require("../firebase");
 const { serverTimestamp } = require("firebase/firestore");
 const calculators = require("../metrics/transportation/TransportationCalculations");
 const { firestore } = require("firebase-admin");
+const converters = require('../metrics/transportation/conversionVars');
 
 const addTransportationDetails = async (request, response, next) => {
   const userId = request.params.id; // Assuming this is the ID of the user
@@ -99,8 +100,10 @@ const calculateUserCFDate = async (request, response, next) => {
       .doc(recordId)
       .get();
     // console.log(record_details);
-    const val = calculators.calculateCFForDate(record_details.data());
-    console.log(val);
+    const val = calculators.calculateCFForDate(record_details.data())
+    console.log(`Number of trees that might have been cut: ${converters.convertToTrees(val)}`);
+    console.log(`Gallons of gas that might have been burnt: ${converters.convertToGasoline(val)}`);
+    console.log(`Number of cars that have been added: ${converters.convertToCars(val)}`);
     response.status(200).send(val.toString());
   } catch (error) {
     response.status(400).send(error.message);
