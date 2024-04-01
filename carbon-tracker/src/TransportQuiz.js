@@ -24,9 +24,28 @@ const TransportQuiz = () => {
       ];
 
       const randomIndex = Math.floor(Math.random() * questions.length);
-
+      const counter = 1;
+      // const incrementCounter = () => { counter + 1; }
+      const randomQuestion = questions[randomIndex];
+      const randomIndexStorage = [];
+      const c02estimation = 0;
   return (
-    questions[randomIndex]
+    // questions[randomIndex]
+    <div>
+      <h1>Food Quiz</h1>
+        <div className='quiz'>
+          <div className='questionContainer'>
+            <p className='questionText'> Question #{counter} </p>
+            <p className='questionText'> {questions[randomIndex]} </p>
+          </div>
+          <div className = "ansContainer">
+            <button class = "ansBtn">Almost Always</button>
+            <button class = "ansBtn">Generally</button>
+            <button class = "ansBtn">Rarely</button>
+            <button class = "ansBtn">Almost Never</button>
+          </div>
+      </div>
+    </div> 
   );
 }
 

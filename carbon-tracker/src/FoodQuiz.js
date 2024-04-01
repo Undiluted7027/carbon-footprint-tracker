@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import './Nav.css';
+import	'./Quiz.css';
+import './Dashboard.css';
+import Counter from './c02counter';
 
 const FoodQuiz = () => {
 
@@ -21,26 +26,53 @@ const FoodQuiz = () => {
         "How can consumers influence the food industry towards more sustainable practices?",
         "What are the health benefits associated with sustainable eating habits?"
       ];
+    
+    const navigate = useNavigate();
+    
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [usedIndices, setUsedIndices] = useState([]);
+    const [c02estimation, setC02Estimation] = useState(0);
+    const [questionNumber, setQuestionNumber] = useState(1);
+    const [selectedAnswer, setSelectedAnswer] = useState(null);
+    
+    const generateUniqueRandomIndex = () => {
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * questions.length);
+      } while (usedIndices.includes(randomIndex));
+      return randomIndex;
+    };
 
-      const randomIndex = Math.floor(Math.random() * questions.length);
-      const counter = 1;
-      // const incrementCounter = () => { counter + 1; }
-      const randomQuestion = questions[randomIndex];
-      const randomIndexStorage = [];
+    const nextQuestion = () => {
+      if (usedIndices.length < questions.length - 1) {
+        const randomIndex = generateUniqueRandomIndex();
+        setUsedIndices(checkedIndices => [...checkedIndices, randomIndex]);
+        setCurrentQuestionIndex(randomIndex);
+        setQuestionNumber(questionNumber => questionNumber + 1);
+      } else {
+          alert("You have completed the quiz!");
+          navigate('/');
+      }
+    };
+
   return (
     // questions[randomIndex]
     <div>
       <h1>Food Quiz</h1>
-      <div className='dashboardContainer'>
-        <p className='dashboardLeftValue'> Question #{counter} </p>
-        <p className='dashboardLeftValue'> {questions[randomIndex]} </p>
+        <div className='quiz'>
+          <div className='questionContainer'>
+            <p className='questionText'> Question #{questionNumber} </p>
+            <p className='questionText'> {questions[currentQuestionIndex]} </p>
+          </div>
+          <div className = "ansContainer">
+            <button class = "ansBtn" >Almost Always</button>
+            <button class = "ansBtn" >Generally</button>
+            <button class = "ansBtn" >Rarely</button>
+            <button class = "ansBtn" >Almost Never</button>
+          </div>
       </div>
-      <div id = "ansGroup" class = "hidden">
-        <button class = "ansBtn">Ans1</button>
-        <button class = "ansBtn">Ans2</button>
-        <button class = "ansBtn">Ans3</button>
-        <button class = "ansBtn">Ans4</button>
-      </div>
+      <p className='questionText'> CO2 Emission: {c02estimation} </p>
+      <button class = "nextBtn" onClick={nextQuestion}>Next Question</button>
     </div> 
   );
 }
