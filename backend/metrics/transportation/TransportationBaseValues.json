@@ -1,0 +1,72 @@
+{
+    "kgCO2permmBtu": {
+        "natural_gas": 53.06,
+        "fuel_gas": 59.00,
+        "propane_gas": 61.46,
+        "crude_oil": 74.54,
+        "lpg": 61.71,
+        "propane": 62.87
+    },
+    "kgCO2perunit": {
+        "aviation_gasoline": {
+            "value": 8.31,
+            "unit": "gallon"
+        },
+        "biodiesel": {
+            "value": 9.45,
+            "unit": "gallon"
+        },
+        "cng": {
+            "value": 0.05444,
+            "unit": "scf"
+        },
+        "ethanol":{
+            "value": 5.75,
+            "unit": "gallon"
+        },
+        "diesel":{
+            "value": 10.21,
+            "unit": "gallon"
+        },
+        "kerosene-type_jet_fuel":{
+            "value": 9.75,
+            "unit": "gallon"
+        },
+        "lng":{
+            "value": 4.5,
+            "unit": "gallon"
+        },
+        "lpg":{
+            "value": 5.68,
+            "unit": "gallon"
+        },
+        "medium-and_heavy_duty_truck": {
+            "value": 1.247,
+            "unit": "vehicle-mile"
+        },
+        "passenger_car":{
+            "value": 0.175,
+            "unit": "vehicle-mile"
+        },
+        "light_duty_truck":{
+            "value": 0.955,
+            "unit": "vehicle-mile"
+        },
+        "medium_and_heavy_duty_truck":{
+            "value": 0.168,
+            "unit": "ton-mile"
+        },
+        "rail": {
+            "value": 0.022,
+            "unit": "ton-mile"
+        },
+        "waterborne_craft":{
+            "value": 0.082,
+            "unit": "ton-mile"
+        },
+        "aircraft":{
+            "value": 0.905,
+            "unit": "ton-mile"
+        }
+    }
+}
