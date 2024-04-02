@@ -10,16 +10,27 @@ import FoodQuiz from './FoodQuiz';
 import { AuthProvider } from './contexts/AuthContext';
 import Register from "./components/accounts/Register";
 import Login from "./components/accounts/Login";
+import Profile from './components/accounts/Profile';
+import ErrorMessage from './components/layouts/ErrorMessage';
+import Header from './components/layouts/Header';
+import WithPrivateRoute from "./utils/WithPrivateRoute"
 
 function App() {
   return (
     <AuthProvider>
     <Router>
       <div className="App">
-        <Nav />
+      <Header />
+        <ErrorMessage />
+        {/* <Nav /> */}
         <Routes>
           <Route exact path='/register' element={<Register />} />
           <Route exact path='/login' element={<Login />} />
+          <Route exact path='/profile' element={
+              <WithPrivateRoute>
+                <Profile />
+              </WithPrivateRoute>
+            } />
           <Route path="/" element={<Dashboard />} />
           <Route path="/TransportQuiz" element={<TransportQuiz />} />
           <Route path="/WasteManagementQuiz" element={<WasteManagementQuiz />} />

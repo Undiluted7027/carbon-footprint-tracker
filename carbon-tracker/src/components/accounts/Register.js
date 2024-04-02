@@ -14,7 +14,7 @@ export default function Register() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const { currentUser, register } = useAuth();
+    const { currentUser, register, setError } = useAuth();
 
     useEffect(() => {
         if (currentUser) {
@@ -26,14 +26,15 @@ export default function Register() {
     async function handleFormSubmit(e) {
     e.preventDefault();
     if (password !== confirmPassword){
-        return alert("Passwords do not match");
+        return setError("Passwords do not match");
     }
     try{
+        setError("");
         setLoading(true);
         await register(email, password);
-        navigate("/profile");
+        navigate("/");
     } catch(e){
-        alert(e.message);
+        setError("Failed to register");
     }
     setLoading(false);
 }
@@ -86,7 +87,7 @@ export default function Register() {
                     <div>
                         <button
                             type="submit"
-                            className=" w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-800 hover:bg-sky-900"
+                            className=" w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-800 hover:bg-sky-900" disabled={loading}
                         >
                             Register
                         </button>
