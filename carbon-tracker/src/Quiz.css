@@ -1,0 +1,73 @@
+.quiz {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 10px;
+    padding: 0 20px;
+}
+
+.questionContainer {
+    flex: 1; /* Give the question container the ability to grow */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the children (questions) horizontally */
+    justify-content: center; /* Center the children (questions) vertically */
+    border-radius: 10px;
+    background-color: rgb(199, 197, 197);
+    padding: 20px; /*Adjust padding as necessary*/
+    height: 50vh;
+    border-right: 5vh;
+    width: 50vh;
+}
+
+.questionText {
+    font-size: 1.5em;
+    background-color: rgb(199, 197, 197);
+    text-align: center; /* Center the text within the questionText */
+    margin: 0; /* Remove default paragraph margin */
+    width: 100%; /* Ensure it takes the full width of its parent */
+}
+
+.ansContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    padding: 20px; /* Adjust padding as necessary */
+    width: 80vh;
+}
+
+.ansBtn{
+    background: #f8f5f5;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    text-align: left;
+    width: 100%;
+    font-weight: 500;
+}
+.ansBtn:hover {
+    background-color: #73b46f;
+    color: white;
+}
+
+.nextBtn {
+    background-color: #96db8d;
+    border: none;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+  /* Rest of the CSS */
