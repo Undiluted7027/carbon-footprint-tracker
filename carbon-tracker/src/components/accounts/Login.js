@@ -42,8 +42,8 @@ export default function Login() {
             Login to your account
           </h2>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleFormSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px">
+        <form className="loginForm" onSubmit={handleFormSubmit}>
+          <div className="loginBoxes">
             <div>
               <input
                 id="email-address"
@@ -51,7 +51,8 @@ export default function Login() {
                 type="email"
                 autoComplete="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 rounded-t-md bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
+                // className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 rounded-t-md bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="boxInput"
                 placeholder="Email address"
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -63,7 +64,7 @@ export default function Login() {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 rounded-t-md bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="boxInput"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -73,7 +74,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className=" w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-800 hover:bg-sky-900"
+              className=" loginButton"
             >
               Login
             </button>
