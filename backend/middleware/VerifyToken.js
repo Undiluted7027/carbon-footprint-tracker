@@ -2,7 +2,8 @@ const firebaseConfig  = require("../firebase");
 
 const VerifyToken = async (request, response, next) => {
     
-    // console.log("Request Headers:", request.headers);
+    console.log("Request Headers:", request.headers);
+    console.log("Request Body: ", request.body);
   const token = request.headers.authorization.split(" ")[1];
 
   try {

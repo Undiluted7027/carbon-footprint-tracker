@@ -1,22 +1,18 @@
 const express = require('express');
-const db = require('../firebase');
+const firebaseConfig = require('../firebase');
 // const User = require('../models/userModel');
 
 const createUser = async(request, response, next) => {
-    const data = request.body;
-    const id = data.email;
-    console.log(data);
-    const userObjRef = db.collection('users').doc();
     try{
+    const { firstName, lastName, email, dob, location } = request.body;
+    const userObjRef = firebaseConfig.db.collection('users').doc(request.user.uid);
+    
         await userObjRef.set({
-            'first_name': data.first_name,
-            'last_name': data.last_name,
-            'email' : data.email,
-            'dob' : data.dob,
-            'location' : data.location,
+            firstName, lastName, email, dob, location,
         });
         response.status(200).send('User created successfully!');
     } catch(error) {
+        console.log(error.message);
         response.status(400).send(error.message);
     }
 };
