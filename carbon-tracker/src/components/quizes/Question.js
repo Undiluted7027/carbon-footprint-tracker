@@ -12,6 +12,7 @@ function Question({ question, onAnswerSelect }) {
       case 'slider':
         return (
           <input 
+            // style={{color: "green", padding: "1em", fontSize: '1.5em'}} // Enclose the value of padding in quotes
             type="range" 
             min={question.minValue} 
             max={question.maxValue} 
