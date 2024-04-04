@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Question from "./questions/Questions";
 import questionsData from "./questions/questions.json";
 import { useAuth } from "../../contexts/AuthContext";
+import '../../Quiz.css';
 
 const Quiz = () => {
   const { currentUser } = useAuth();
@@ -80,7 +81,8 @@ const Quiz = () => {
   const currentQues = questions[currentQuestionIndex];
 
   return (
-    <div>
+    <div className="quiz">
+    <div className="quizAirplane">
       {currentQues && (
         <Question
           question={{
@@ -105,11 +107,13 @@ const Quiz = () => {
       {currentQuestionIndex < questions.length && (
         <button
           onClick={handleNext}
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+          // className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+          className='nextBtn'
         >
           Next
         </button>
       )}
+    </div>
     </div>
   );
 };
