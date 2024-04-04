@@ -5,8 +5,8 @@ const {addTransportationDetails, getAllTransportationDetails, getSingleTransport
 const router = express.Router();
 
 router.post('/:id', addTransportationDetails);
-router.get('/:id', getAllTransportationDetails);
-router.get('/:id/:transRecId', calculateUserCFDate);
+// router.get('/:id', getAllTransportationDetails);
+router.get('/:id', calculateUserCFDate);
 // router.post('/:id/:transRecId', calculateUserCFDate);
 router.put('/:id/:transRecId', updateTransportationRec);
 router.delete('/:id/:transRecId', deleteTransportationRec);
