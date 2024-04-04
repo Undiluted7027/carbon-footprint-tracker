@@ -1,0 +1,72 @@
+* {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+ }
+.loginMainContainer {
+    display: flex;
+    justify-content: flex-start; /* Change from center to flex-start to move up */
+    align-items: center;
+    height: 100vh; /* full height to use the entire viewport height */
+    padding-top: 10vh; /* add padding at the top */
+    /* background-color: #f5f5f5; */
+    flex-direction: column;
+}
+.loginContainer {
+    display: flex;
+    flex-direction: column; /* changed to column for better structure */
+    align-items: center;
+    width:fit-content;
+    /* background-color: #f5f5f5; */
+}
+.loginTitle {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 1em;
+    align-items: center;
+    text-align: center;
+}
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+  
+.loginBoxes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.boxInput {
+    width: 100%;
+    height: 2em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color:   #96db8d;
+}
+.loginButton {
+    background-color: #96db8d;
+    border: none;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    /* display: inline-block; */
+    display: block;
+    font-size: 14px;
+    margin: 4px auto;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 1em 2em;
+    width: 100%;
+}
+.loginButton:hover {
+    background-color: #73b46f;
+}

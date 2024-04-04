@@ -104,6 +104,11 @@
     margin-right: 1em;
 }
 
+.myCustomButton {
+    background-color: #96db8d !important;
+}
+
+
 /* .navProfile{
     color: #1E1E1E;
     background-color: #96db8d;

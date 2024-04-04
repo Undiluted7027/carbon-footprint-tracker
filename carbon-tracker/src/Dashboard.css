@@ -5,6 +5,7 @@
     margin-left: 5vw;
     width: auto; /* Or specify a width if you want to limit its size */
     height: auto;
+    padding: 1em;
 }
 
 .dashboardContainer .dashboardLeft, .dashboardTopic {
