@@ -1,19 +1,19 @@
 const express = require("express");
-const db = require("../firebase");
+const firebaseConfig = require("../firebase");
 const { serverTimestamp } = require("firebase/firestore");
 const calculators = require("../metrics/transportation/TransportationCalculations");
 const { firestore } = require("firebase-admin");
-const converters = require('../metrics/transportation/conversionVars');
+const converters = require("../metrics/transportation/conversionVars");
 
 const addTransportationDetails = async (request, response, next) => {
   const userId = request.params.id; // Assuming this is the ID of the user
-  const userDataRef = db.collection("users").doc(userId);
-  const transportationRef = userDataRef.collection("transportation");
+  const userDataRef = firebaseConfig.db.collection("users").doc(userId);
+  const transportationRef = userDataRef.collection("Transportation");
 
   try {
     // Get the last added record in the transportation subcollection
     const lastTransportationSnapshot = await transportationRef
-      .orderBy("createdAt", "desc")
+      .orderBy("updatedAt", "desc")
       .limit(1)
       .get();
 
@@ -22,11 +22,16 @@ const addTransportationDetails = async (request, response, next) => {
       // If no existing records, create a new one
       console.log("record is empty");
       const newTransportationRef = transportationRef.doc();
-      const created_at_timestamp = { createdAt: firestore.Timestamp.now() };
+      // const created_at_timestamp = { , updatedAt: firestore.Timestamp.now() };
+      const tt = firestore.Timestamp.now();
+      const dat = {
+        createdAt: tt,
+        ...request.body,
+        updatedAt: tt,
+      };
 
-      const dat = { ...request.body, ...created_at_timestamp };
       // docRef.update({ updated_at: updated_at_timestamp })
-      await newTransportationRef.set(dat, { merge: true });
+      await newTransportationRef.set(dat);
       response
         .status(200)
         .send(`Transportation data added successfully for the user ${userId}`);
@@ -35,7 +40,12 @@ const addTransportationDetails = async (request, response, next) => {
       const lastTransportationId = lastTransportationSnapshot.docs[0].id;
       const existingTransportationRef =
         transportationRef.doc(lastTransportationId);
-      await existingTransportationRef.set(request.body, { merge: true });
+      const tt = firestore.Timestamp.now();
+      const dat = {
+        ...request.body,
+        updatedAt: tt,
+      };
+      await existingTransportationRef.update(dat, { merge: true });
       response
         .status(200)
         .send(`Transportation data added successfully for the user ${userId}`);
@@ -91,20 +101,46 @@ const getSingleTransportationRec = async (
 };
 
 const calculateUserCFDate = async (request, response, next) => {
-  const userId = request.params.id;
-  const recordId = request.params.transRecId;
-  const docRef = db.collection("users").doc(userId);
+  calculators.calculateCFForDate();
+  const userId = request.params.id; // Assuming this is the ID of the user
+  const userDataRef = firebaseConfig.db.collection("users").doc(userId);
+  const transportationRef = userDataRef.collection("Transportation");
+
   try {
-    const record_details = await docRef
-      .collection("transportation")
-      .doc(recordId)
+    // Get the last added record in the transportation subcollection
+    const lastTransportationSnapshot = await transportationRef
+      .orderBy("updatedAt", "desc")
+      .limit(1)
       .get();
-    // console.log(record_details);
-    const val = calculators.calculateCFForDate(record_details.data())
-    console.log(`Number of trees that might have been cut: ${converters.convertToTrees(val)}`);
-    console.log(`Gallons of gas that might have been burnt: ${converters.convertToGasoline(val)}`);
-    console.log(`Number of cars that have been added: ${converters.convertToCars(val)}`);
-    response.status(200).send(val.toString());
+
+    // Check if there are any existing records
+    if (!lastTransportationSnapshot.empty) {
+      // If no existing records, create a new one
+      const lastTransportationId = lastTransportationSnapshot.docs[0].id;
+      const record_details = await transportationRef.doc(lastTransportationId).get();
+      // console.log(record_details.data());
+      // console.log(record_details);
+      const val = await calculators.calculateCFForDate(record_details.data());
+      const obj = {
+        "trees": converters.convertToTrees(val),
+        "gas": converters.convertToGasoline(val),
+        "cars": converters.convertToCars(val),
+      }
+      console.log(
+        `Number of trees that might have been cut: ${converters.convertToTrees(
+          val
+        )}`
+      );
+      console.log(
+        `Gallons of gas that might have been burnt: ${converters.convertToGasoline(
+          val
+        )}`
+      );
+      console.log(
+        `Number of cars that have been added: ${converters.convertToCars(val)}`
+      );
+      response.status(200).send(obj);
+    }
   } catch (error) {
     response.status(400).send(error.message);
   }

@@ -19,7 +19,7 @@ export function AuthProvider({children}) {
     }
 
     function register(email, password){
-        return createUserWithEmailAndPassword(auth, email, password);
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
     function login(email, password){

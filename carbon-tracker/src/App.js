@@ -3,7 +3,7 @@ import './App.css';
 import Nav from './Nav';
 import Dashboard from './Dashboard';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import TransportQuiz from './TransportQuiz';
+// import TransportQuiz from './TransportQuiz';
 import WasteManagementQuiz from './WasteManagementQuiz';
 import FoodQuiz from './FoodQuiz';
 
@@ -14,6 +14,9 @@ import Profile from './components/accounts/Profile';
 import ErrorMessage from './components/layouts/ErrorMessage';
 import Header from './components/layouts/Header';
 import WithPrivateRoute from "./utils/WithPrivateRoute"
+import Quiz from './components/quizes/Airplane';
+
+// import Quiz from './components/quizes/Quiz';
 
 function App() {
   return (
@@ -32,7 +35,7 @@ function App() {
               </WithPrivateRoute>
             } />
           <Route path="/" element={<Dashboard />} />
-          <Route path="/TransportQuiz" element={<TransportQuiz />} />
+          <Route path="/TransportQuiz" element={<Quiz />} />
           <Route path="/WasteManagementQuiz" element={<WasteManagementQuiz />} />
           <Route path="/FoodQuiz" element={<FoodQuiz />} />
         </Routes>

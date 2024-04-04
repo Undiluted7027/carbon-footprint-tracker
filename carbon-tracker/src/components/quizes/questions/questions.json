@@ -1,0 +1,109 @@
+{
+    "Category": "Transportation",
+    "Sub_Category": "Airplane Travel",
+    "content": {
+        "QMain_id": "airplane_travel_",
+        "questions": {
+            "type": "Main",
+            "qid": "bool_start",
+            "answers": [
+                "yes",
+                "no"
+            ],
+            "inputNum": "1",
+            "datatype": "bool",
+            "element": "options",
+            "content": "Did you travel via airplane in the past?",
+            "sub_questions": [
+                {
+                    "type": "sub",
+                    "qid": "trips_num",
+                    "id": "1",
+                    "sequence": "",
+                    "datatype": "int",
+                    "element": "slidebar",
+                    "content": "How many trips did you have in the past month?",
+                    "answers": [
+                        1,
+                        100
+                    ],
+                    "inputNum": "1",
+                    "loop_num": "",
+                    "opted": {
+                        "default": "Yes",
+                        "other": "No"
+                    },
+                    "useAPI": "false",
+                    "connectedTo": "2"
+                },
+                {
+                    "type": "sub",
+                    "qid": "fuel_type",
+                    "id": "2",
+                    "datatype": "string",
+                    "element": "options",
+                    "answers": [
+                        "jet fuel",
+                        "diesel",
+                        "petrol",
+                        "hydrogen",
+                        "electric"
+                    ],
+                    "inputNum": "1",
+                    "sequence": "",
+                    "content": "What was the type of fuel used for majority of your flights?",
+                    "opted": {
+                        "default": "Yes",
+                        "other": "No"
+                    },
+                    "useAPI": "false",
+                    "connectedTo": "3"
+                },
+                {
+                    "type": "sub",
+                    "qid": "loc_start",
+                    "id": "3",
+                    "answers": [
+                        "placeA",
+                        "placeB",
+                        "No"
+                    ],
+                    "placeholders": ["From: ", "To: ", "Don't wish to answer"],
+                    "inputNum": "3",
+                    "datatype": "string",
+                    "element": "text",
+                    "sequence": "",
+                    "content": "Where did you travel to? And from where?",
+                    "opted": {
+                        "default": "Yes",
+                        "other": "No"
+                    },
+                    "useAPI": "true",
+                    "connectedTo": "null"
+                },
+                {
+                    "type": "sub",
+                    "qid": "avg_time_num",
+                    "id": "4",
+                    "datatype": "int",
+                    "element": "number",
+                    "answers": [
+                        "days",
+                        "hrs",
+                        "mins"
+                    ],
+                    "placeholders": ["days: ", "hrs: ", "mins: "],
+                    "inputNum": "3",
+                    "sequence": "",
+                    "content": "What was the average duration of your flights?",
+                    "opted": {
+                        "default": "Yes",
+                        "other": "No"
+                    },
+                    "useAPI": "false",
+                    "connectedTo": "null"
+                }
+            ]
+        }
+    }
+}

@@ -1,15 +1,38 @@
 import { LogoutIcon } from "@heroicons/react/outline";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useAuth } from "../../contexts/AuthContext";
 import Logout from "../accounts/Logout";
 import ThemeToggler from "./ThemeToggler";
+import auth from "../../config/firebase";
 
 export default function Header() {
   const [modal, setModal] = useState(false);
 
   const { currentUser } = useAuth();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const user = auth.currentUser;
+        const token = user && (await user.getIdToken());
+        const payloadHeader = {
+          headers: {
+            'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
+            "Authorization": `Bearer ${token}`,
+          },
+        };
+        // console.log(payloadHeader);
+        const response = await fetch("http://localhost:3001", payloadHeader);
+        console.log(await response.text());
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
