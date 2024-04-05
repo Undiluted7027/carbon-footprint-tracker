@@ -8,6 +8,10 @@ import ThemeToggler from "./ThemeToggler";
 // import Nav from "../../Nav";
 import '../../Nav.css';
 import auth from "../../config/firebase";
+// Correct file name and path
+import Group16Image from './Group_16.png';
+
+
 
 export default function Header() {
   const [modal, setModal] = useState(false);
@@ -40,7 +44,9 @@ export default function Header() {
     <>
       <nav className="nav">
         <div className="navContainer">
-          <Link to="/" className="navTab">Chat App</Link>
+        <Link to="/" className="navTab">
+          <img className = "navLogo" src={Group16Image} />
+        </Link>
           <Link to = "/" className='navTab'> Home </Link>
           <p className='navTab'> Leaderboard</p>
         </div>

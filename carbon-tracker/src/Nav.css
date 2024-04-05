@@ -19,6 +19,15 @@
     align-items: center;
 }
 
+.navLogo{
+    /* background-color: #96db8d; */
+    border: 2px solid #1E1E1E;
+    width: 7vh;
+    height: 7vh;
+    border-radius: 10vh;
+
+}
+
 .navContainer{
     background-color: #96db8d;
     /* background-color:  #1C1C1C; */

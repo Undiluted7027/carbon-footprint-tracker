@@ -37,20 +37,21 @@
 .loginBoxes {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: column;
     align-items: center;
-    width: 100%;
+    width: 50%;
     margin-bottom: 1em;
 }
 
 .boxInput {
-    width: 100%;
+    width: fit-content;
     height: 2em;
     margin-bottom: 1em;
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color:   #96db8d;
+    display: block;
 }
 .loginButton {
     background-color: #96db8d;

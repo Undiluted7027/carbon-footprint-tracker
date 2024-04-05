@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useEffect, useRef } from "react";
 import Autocomplete from "react-google-autocomplete";
+import './login.css'
 
 
 export default function Register() {
@@ -92,20 +93,20 @@ export default function Register() {
 
 
     return (
-        <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8">
+        <div className="LoginMainContainer">
+            <div className="LoginContainer">
                 <div>
-                    <h2 className="mt-4 text-3xl text-center tracking-tight font-light dark:text-white">
+                    <h2 className="loginTitle">
                         Register your account
                     </h2>
                 </div>
-                <form className="mt-8 space-y-6" onSubmit={handleFormSubmit}>
-                    <div className="rounded-md shadow-sm -space-y-px">
+                <form className="loginForm" onSubmit={handleFormSubmit}>
+                    <div className="loginBoxes">
                         <div>
-                            <input id="first_name" name="first_name" type="text" autoComplete="first_name" required className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 rounded-t-md bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
+                            <input id="first_name" name="first_name" type="text" autoComplete="first_name" required className="boxInput"
                                 placeholder="First Name"
                                 onChange={(e) => setFirstName(e.target.value)} />
-                            <input id="last_name" name="last_name" type="text" autoComplete="last_name" required className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 rounded-t-md bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
+                            <input id="last_name" name="last_name" type="text" autoComplete="last_name" required className="boxInput"
                                 placeholder="Last Name"
                                 onChange={(e) => setLastName(e.target.value)} />
                             <input
@@ -114,7 +115,7 @@ export default function Register() {
                                 type="email"
                                 autoComplete="email"
                                 required
-                                className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 rounded-t-md bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
+                                className="boxInput"
                                 placeholder="Email address"
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -126,7 +127,7 @@ export default function Register() {
                                 type="password"
                                 autoComplete="current-password"
                                 required
-                                className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 rounded-t-md bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
+                                className="boxInput"
                                 placeholder="Password"
                                 onChange={(e) => setPassword(e.target.value)}
                             />
@@ -138,7 +139,7 @@ export default function Register() {
                                 type="password"
                                 autoComplete="current-password"
                                 required
-                                className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 rounded-t-md bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
+                                className="boxInput"
                                 placeholder="Confirm Password"
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                             />
