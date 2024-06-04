@@ -1,5 +1,6 @@
 # carbon-footprint-tracker
-
+## Welcome to EcoPath!
+EcoPath is your personal environmental companion designed to help you monitor and minimize your ecological footprint with ease. With a user-friendly interface and a suite of indispensable tools, EcoPath is a web app that empowers you to make informed decisions and take actionable steps toward a more sustainable lifestyle.
 ## Documentation
 DECIDE IF CARBON FOOTPRINT FOR A DAY, MONTH OR A YEAR
 opted option for each question sub category
